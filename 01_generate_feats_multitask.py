@@ -207,8 +207,8 @@ if __name__=="__main__":
     snowice_mask = masks["snowice_mask"]
     sun_mask = masks["sun_mask"]
 
-    # final_water_mask = water_mask * (1-cloudshadow_mask) * (1-cloud_mask) * (1-snowice_mask) * sun_mask
-    final_water_mask = water_mask * sun_mask
+    final_water_mask = water_mask * (1-cloudshadow_mask) * (1-cloud_mask) * (1-snowice_mask) * sun_mask
+    # final_water_mask = water_mask * sun_mask
     
     for band in list(range(1, 13))+["8a"]:
         band_min, band_mean, band_max, band_std, band_median, band_count = get_features(
