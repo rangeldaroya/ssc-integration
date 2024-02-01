@@ -1,0 +1,3 @@
+*.tif
+ckpts/*
+data/*
