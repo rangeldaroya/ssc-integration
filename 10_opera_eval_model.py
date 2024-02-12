@@ -21,6 +21,8 @@ parser = argparse.ArgumentParser(description='Generate dataset for FMask multita
 #                     help='Directory where produced features will be saved')
 parser.add_argument('--backbone', default='deeplabv3p', type=str,
                     help='Backbone of model being used. Options: deeplabv3p, mobilenetv3, segnet')
+parser.add_argument('--batch_size', default=12, type=int,
+                    help='Batch size for evaluation (default is 12)')
 parser.add_argument('--is_distrib', default=1, type=int,
                     help='Flag to indicate if model was trained in distributed way (1=distributed, 0=not)')
 
@@ -147,7 +149,7 @@ if __name__ == "__main__":
     fmask_precs = []
     fmask_f1s = []
 
-    batch_size = 12
+    batch_size = args.batch_size
 
     model_TPs, model_TP_FNs, model_TP_FPs = [], [], []
     fmask_TPs, fmask_TP_FNs, fmask_TP_FPs = [], [], []
