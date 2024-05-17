@@ -50,6 +50,13 @@ def get_features(band, fp_dir, fn_prefix, final_water_mask, nodata_val=-9999):
         data = np.where(data==nodata_val, np.nan, data) # replace nodata vals with nan
         mask = np.where(final_water_mask==1, 1, np.nan) # change masked out values to nan
         
+        # Only get 300m buffer around center (20 by 20 pixels)
+        mid_x, mid_y = 512//2, 512//2
+        data = data[mid_x-10:mid_x+10, mid_y-10:mid_y+10]
+        mask = mask[mid_x-10:mid_x+10, mid_y-10:mid_y+10]
+        assert data.shape == (20,20)
+        assert mask.shape == (20,20)
+        
         masked_feat = data * mask
         band_min = np.nanmin(masked_feat)
         band_mean = np.nanmean(masked_feat)
