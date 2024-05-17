@@ -20,3 +20,10 @@ opera/*
 hls-super-script/*
 *.png
 *.tif
+OPERA-data/data_downloads/*
+OPERA-data/logs*
+OPERA-data/*
+opera_multitask_feats*
+results*
+ckpts*
+data/*
